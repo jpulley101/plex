@@ -1,0 +1,43 @@
+
+version: "3"
+services:
+  plex:
+    image: lscr.io/linuxserver/plex:latest
+    container_name: plex
+    ports:
+      - "32400:32400/tcp"
+      - "1900:1900/udp"
+      - "3005:3005/tcp"
+      - "5353:5353"
+      - "8324:8324/tcp"
+      - "32410:32410/udp"
+      - "32412:32412/udp"
+      - "32413:32413/udp"
+      - "32414:32414/udp"
+      - "32469:32469/tcp"
+    hostname: plex.achorprod.com
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - VERSION=docker
+      - ADVERTISE_IP=https://plex.anchorprod.com/
+      - TZ=EST
+      - PLEX_CLAIM=claim-RgoAyDo9kBGywwRJDmwa
+      - NVIDIA_VISIBLE_DEVICES=all
+    volumes:
+      - /home/jarrett/plex/data:/config
+      - /media/plex/tv:/tv
+      - /media/plex/movies:/movies
+    restart: unless-stopped
+    cpus: "12.0"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.plex.rule=Host(`${SUBDOMAIN}.${DOMAIN_NAME}`)"
+      - "traefik.http.routers.plex.entrypoints=web,websecure"
+      - "traefik.http.services.plex.loadbalancer.server.port=32400"
+      - "traefik.http.routers.plex.tls.certresolver=mytlschallenge"
+      - "traefik.http.routers.plex.tls=true"
+networks:
+  default:
+    name: traefik_default
+    external: true

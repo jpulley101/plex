@@ -1,0 +1,28 @@
+version: "2.1"
+services:
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=EST
+    volumes:
+      - /home/radarr/data:/config
+      - /media/plex/movies:/movies #optional
+      - /media/sab/downloads:/downloads 
+      - /media/sab/incomplete:/incomplete
+    ports:
+      - 7878:7878
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.radarr.rule=Host(`${SUBDOMAIN}.${DOMAIN_NAME}`)"
+      - "traefik.http.routers.radarr.entrypoints=web, websecure"
+      - "traefik.http.services.radarr.loadbalancer.server.port=7878"
+#      - "traefik.http.routers.radarr.tls.certresolver=mytlschallenge"
+      - "traefik.http.routers.radarr.tls=true"
+networks:
+  default:
+    name: traefik_default
+    external: true
