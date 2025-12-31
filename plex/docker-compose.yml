@@ -22,17 +22,10 @@ services:
       - VERSION=docker
       - ADVERTISE_IP=https://plex.anchorprod.com/
       - TZ=EST
-<<<<<<< HEAD
-      - PLEX_CLAIM=claim-X_zVEpsEt6Y-kNfUFa_s
-      - NVIDIA_VISIBLE_DEVICES=all
-    volumes:
-      - /home/jarrett/plex/plex/data:/config
-=======
       - PLEX_CLAIM=claim-RgoAyDo9kBGywwRJDmwa
       - NVIDIA_VISIBLE_DEVICES=all
     volumes:
       - /home/jarrett/plex/data:/config
->>>>>>> d4d4856df77f670a9a7ea817c272810253fc61f3
       - /media/plex/tv:/tv
       - /media/plex/movies:/movies
     restart: unless-stopped
