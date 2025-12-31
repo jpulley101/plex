@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *.env
 *.env.example
 *.env.local
@@ -7,3 +8,25 @@
 npm-debug.log*
 dist/
 build/
+=======
+*.env
+*.env.example
+*.env.local
+*.env.staging
+**/*node_modules
+*.log
+npm-debug.log*
+dist/
+build/
+plex/data
+sonarr/data
+radarr/data
+over/data
+./data
+.data
+data/
+./sab/data
+./traefik/letsencrypt
+traefik/letsencrypt/
+
+>>>>>>> d4d4856df77f670a9a7ea817c272810253fc61f3

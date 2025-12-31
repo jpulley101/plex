@@ -9,7 +9,11 @@ services:
       - PGID=1000
       - TZ=EST
     volumes:
+<<<<<<< HEAD
       - /home/jarrett/plex/sab/data:/config
+=======
+      - /home/jarrett/sab/data:/config
+>>>>>>> d4d4856df77f670a9a7ea817c272810253fc61f3
       - /media/plex/sab/downloads:/downloads #optional
       - /media/plex/sab/incomplete:/incomplete #optional
     ports:

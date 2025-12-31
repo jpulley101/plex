@@ -8,9 +8,15 @@ services:
       - PGID=1000
       - TZ=EST
     volumes:
+<<<<<<< HEAD
       - /home/jarrett/plex/sonarr/data:/config
       - /media/plex/tv:/tv
       - /media/sab/downloads:/downloads 
+=======
+      - /home/jarrett/sonarr/data:/config
+      - /media/plex/tv:/tv
+      - /media/plex/sab/downloads:/downloads
+>>>>>>> d4d4856df77f670a9a7ea817c272810253fc61f3
       - /media/plex/sab/incomplete:/incomplete
     ports:
       - 8989:8989

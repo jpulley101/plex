@@ -8,10 +8,17 @@ services:
       - PGID=1000
       - TZ=EST
     volumes:
+<<<<<<< HEAD
       - /home/jarrett/plex/radarr/data:/config
       - /media/plex/movies:/movies #optional
       - /media/sab/downloads:/downloads 
       - /media/plex/sab/incomplete:/incomplete
+=======
+      - /home/radarr/data:/config
+      - /media/plex/movies:/movies #optional
+      - /media/sab/downloads:/downloads 
+      - /media/sab/incomplete:/incomplete
+>>>>>>> d4d4856df77f670a9a7ea817c272810253fc61f3
     ports:
       - 7878:7878
     restart: unless-stopped
