@@ -1,0 +1,9 @@
+*.env
+*.env.example
+*.env.local
+*.env.staging
+**/*node_modules
+*.log
+npm-debug.log*
+dist/
+build/

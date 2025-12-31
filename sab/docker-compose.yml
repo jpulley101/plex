@@ -1,0 +1,25 @@
+version: "2.1"
+services:
+  sabnzbd:
+    image: lscr.io/linuxserver/sabnzbd:latest
+    container_name: sabnzbd
+    hostname: sab.anchorprod.com
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=EST
+    volumes:
+      - /home/jarrett/plex/sab/data:/config
+      - /media/plex/sab/downloads:/downloads #optional
+      - /media/plex/sab/incomplete:/incomplete #optional
+    ports:
+      - 8080:8080
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.sabnzbd.rule=Host(`${SUBDOMAIN}.${DOMAIN_NAME}`)"
+      - "traefik.http.routers.sabnzbd.tls=true"
+networks:
+  default:
+    name: traefik_default
+    external: true

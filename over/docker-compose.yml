@@ -1,0 +1,26 @@
+---
+version: '3'
+
+services:
+  overseerr:
+    image: lscr.io/linuxserver/overseerr:latest
+    container_name: overseerr
+    environment:
+      - LOG_LEVEL=debug
+      - TZ=EST
+    ports:
+      - 5055:5055
+    volumes:
+      - /home/jarrett/plex/over/data:/config
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.overseerr.rule=Host(`${SUBDOMAIN}.${DOMAIN_NAME}`)"
+      - "traefik.http.routers.overseerr.entrypoints=web, websecure"
+      - "traefik.http.services.overseerr.loadbalancer.server.port=5055"
+      - "traefik.http.routers.overseerr.tls=true"
+      - "traefik.http.routers.overseerr.tls.certresolver=mytlschallenge"
+networks:
+  default:
+    name: traefik_default
+    external: true
