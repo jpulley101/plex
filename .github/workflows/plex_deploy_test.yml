@@ -4,7 +4,7 @@ on:
       - '*'
       - '!master'
 jobs:
-  example-job:
+  Plex_Services:
     runs-on: [self-hosted, proxy1]
     defaults:
       run:
