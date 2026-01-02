@@ -12,5 +12,7 @@ jobs:
     steps:
       - name: Check out the repository to the runner
         uses: actions/checkout@v5
-      - name: Run a script
-        run: ./start.sh
+      - name: Start Traefik
+        run: docker compose -f ./traefik/docker-compose.yml up -d
+      - name: Start containers
+        run: docker compose -f ./plexservices.yml up -d
