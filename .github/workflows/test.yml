@@ -16,7 +16,8 @@ jobs:
         run: docker compose -f ./traefik/docker-compose.yml up -d
       - name: Start containers
         run: docker compose -f ./plexservices.yml up -d
-      - name: Stop All Containers
-        run: docker stop $(docker ps -q)
+      - name: Stop & Remove All Containers
+        run: docker stop $(docker ps -aq) && docker rm $(docker ps -aq)
       - name: Remove All Containers
-        run: docker rm $(docker ps -q)
+        run: docker system prune -f
+   
