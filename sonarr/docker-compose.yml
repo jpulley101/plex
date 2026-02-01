@@ -1,4 +1,4 @@
-version: "2.1"
+name: sonarr
 services:
   sonarr:
     image: lscr.io/linuxserver/sonarr:latest

@@ -1,4 +1,4 @@
-version: "2.1"
+name: sab
 services:
   sabnzbd:
     image: lscr.io/linuxserver/sabnzbd:latest
